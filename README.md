@@ -36,7 +36,8 @@ Please check and install the libraries.
 
 ```
 # install snowboy
-$ npm install
+$ npm install nan
+$ npm ci
 # install text to speech dependencies
 $ pip install -r requirements.txt
 ```
@@ -45,11 +46,6 @@ $ pip install -r requirements.txt
 
 ```
 $ cd node_modules/snowboy/swig/Python3
-
-# Please change line #5 of Makefile if you use Ubuntu/Raspberry Pi/Pine64/Nvidia Jetson TX1/Nvidia Jetson TX2
-# #SWIG := swig
-# SWIG := swig3.0
-
 $ make
 ```
 
