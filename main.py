@@ -19,12 +19,15 @@ import uuid
 aiy.i18n.set_language_code('ja-JP')
 myuuid = str(uuid.uuid4())
 model = os.path.join(os.path.dirname(__file__), 'hotword.pmdl')
+
+# SKILL's function
+def tv_on():
+  say("TVの電源を入れます")
+
+# SKILL map
 skills = {
   "テレビつけて": tv_on
 }
-
-def tv_on():
-  say("TVの電源を入れます")
 
 def callbacks():
   #snowboydecoder.play_audio_file(snowboydecoder.DETECT_DING)
