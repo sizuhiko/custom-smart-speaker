@@ -76,7 +76,6 @@ def say(text):
 def main():
   detector = snowboydecoder.HotwordDetector(model, sensitivity=0.5)
   recognizer = aiy.cloudspeech.get_recognizer()
-  text_recognizer = detect_intent_texts.get_recognizer()
   status_ui = aiy.voicehat.get_status_ui()
   aiy.audio.get_recorder().start()
 
