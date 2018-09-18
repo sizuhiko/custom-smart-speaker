@@ -97,8 +97,8 @@ def main():
     elif text in skills:
       print('INFO:Skill:', text, '"')
       skills[text]()
-    else
-    print('INFO:"', text, '"')
+    else:
+      print('INFO:"', text, '"')
       
 if __name__ == '__main__':
   main()
