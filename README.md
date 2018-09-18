@@ -1,4 +1,4 @@
-# mr.concie
+# Custom Smart Speaker
 
 Custom Smart Speaker made by [AIY Voice Kit](https://aiyprojects.withgoogle.com/voice/)
 
@@ -11,7 +11,8 @@ Custom Smart Speaker made by [AIY Voice Kit](https://aiyprojects.withgoogle.com/
 
 ### Raspberry Pi 3
 
-Please see [Installing Python 3.6 on Raspbian](https://gist.github.com/dschep/24aa61672a2092246eaca2824400d37f) if you use Raspberry Pi 3.
+Please see followings :
+- [Installing Node.js via package manager](https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions)
 
 ## Platform Dependencies
 
@@ -24,6 +25,8 @@ Please check and install the libraries.
 - Google AIY Voice Kit
   - [Setup the Assistant](https://aiyprojects.withgoogle.com/voice/#google-assistant)
   - [CUSTOM VOICE USER INTERFACE](https://aiyprojects.withgoogle.com/voice/#makers-guide--custom-voice-user-interface)
+- Google Text to Speech API
+  - [Text-to-Speech API Client Libraries](https://cloud.google.com/text-to-speech/docs/reference/libraries#client-libraries-install-python)
 
 ### Raspberry Pi 3
 
