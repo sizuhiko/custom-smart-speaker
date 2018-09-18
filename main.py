@@ -69,6 +69,7 @@ def say(text):
   pygame.mixer.init()
   pygame.mixer.music.load(filename)
   mp3_length = mp3(filename).info.length
+  pygame.mixer.music.set_volume(70 / 100)
   pygame.mixer.music.play(1)
   time.sleep(mp3_length + 0.25)
   pygame.mixer.music.stop()
