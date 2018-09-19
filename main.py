@@ -6,6 +6,7 @@ import aiy.i18n
 import aiy.voicehat
 import aiy.assistant.auth_helpers
 from aiy.assistant.library import Assistant
+from google.assistant.library.event import EventType
 
 import snowboydecoder
 
