@@ -9,7 +9,7 @@ import aiy.assistant.device_helpers
 
 import google.auth.transport.grpc
 import google.auth.transport.requests
-from googlesamples.assistant.grpc import textinput
+from googlesamples.assistant.grpc.textinput import SampleTextAssistant
 
 import snowboydecoder
 
