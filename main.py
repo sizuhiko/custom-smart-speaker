@@ -140,7 +140,7 @@ def call_assistant(text):
     say(response_text)
 
 def main():
-  detector = snowboydecoder.HotwordDetector(model, sensitivity=0.5)
+  detector = snowboydecoder.HotwordDetector(model, sensitivity=0.6)
   recognizer = aiy.cloudspeech.get_recognizer()
   status_ui = aiy.voicehat.get_status_ui()
   aiy.audio.get_recorder().start()
