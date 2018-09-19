@@ -128,23 +128,23 @@ def say(text):
   # voice parameters and audio file type
   try:
     response = client.synthesize_speech(synthesis_input, voice, audio_config)
+
+    # The response's audio_content is binary.
+    filename = 'output.mp3'
+    with open(filename, 'wb') as out:
+      # Write the response to the output file.
+      out.write(response.audio_content)
+      print('Audio content written to file "output.mp3"')
+
+    pygame.mixer.init()
+    pygame.mixer.music.load(filename)
+    mp3_length = mp3(filename).info.length
+    pygame.mixer.music.set_volume(40 / 100)
+    pygame.mixer.music.play(1)
+    time.sleep(mp3_length + 0.25)
+    pygame.mixer.music.stop()
   except:
     pass
-
-  # The response's audio_content is binary.
-  filename = 'output.mp3'
-  with open(filename, 'wb') as out:
-    # Write the response to the output file.
-    out.write(response.audio_content)
-    print('Audio content written to file "output.mp3"')
-
-  pygame.mixer.init()
-  pygame.mixer.music.load(filename)
-  mp3_length = mp3(filename).info.length
-  pygame.mixer.music.set_volume(40 / 100)
-  pygame.mixer.music.play(1)
-  time.sleep(mp3_length + 0.25)
-  pygame.mixer.music.stop()
 
 def call_assistant(text):
   credentials = aiy.assistant.auth_helpers.get_assistant_credentials()
