@@ -5,8 +5,11 @@ import aiy.cloudspeech
 import aiy.i18n
 import aiy.voicehat
 import aiy.assistant.auth_helpers
-from aiy.assistant.library import Assistant
-from google.assistant.library.event import EventType
+import aiy.assistant.device_helpers
+
+import google.auth.transport.grpc
+import google.auth.transport.requests
+from googlesamples.assistant.grpc import textinput
 
 import snowboydecoder
 
@@ -77,24 +80,16 @@ def say(text):
   time.sleep(mp3_length + 0.25)
   pygame.mixer.music.stop()
 
-def process_event(assistant, event, text):
-  print(event)
-  status_ui = aiy.voicehat.get_status_ui()
-  if event.type == EventType.ON_START_FINISHED:
-    status_ui.status('thinking')
-    assistant.send_text_query(text)
-  elif event.type == EventType.ON_RENDER_RESPONSE:
-    assistant.stop_conversation()
-    say(event.args['text'])
-    status_ui.status('ready')
-  elif event.type == EventType.ON_ASSISTANT_ERROR and event.args and event.args['is_fatal']:
-    sys.exit(1)
-
 def call_assistant(text):
   credentials = aiy.assistant.auth_helpers.get_assistant_credentials()
-  with Assistant(credentials) as assistant:
-    for event in assistant.start():
-      process_event(assistant, event, text)
+  http_request = google.auth.transport.requests.Request()
+  grpc_channel = google.auth.transport.grpc.secure_authorized_channel(
+    credentials, http_request, 'embeddedassistant.googleapis.com')
+  model_id, device_id = aiy.assistant.device_helpers.get_ids_for_service(credentials)
+  with SampleTextAssistant(lang, model_id, device_id, False,
+                           grpc_channel, 60 * 3 + 5) as assistant:
+    response_text, response_html = assistant.assist(text_query=text)
+    say(response_text)
 
 def main():
   detector = snowboydecoder.HotwordDetector(model, sensitivity=0.5)
