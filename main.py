@@ -88,7 +88,7 @@ def call_assistant(text):
   model_id, device_id = aiy.assistant.device_helpers.get_ids_for_service(credentials)
   with SampleTextAssistant('ja-JP', model_id, device_id,
                            grpc_channel, 60 * 3 + 5) as assistant:
-    response_text, response_html = assistant.assist(text_query=text)
+    response_text = assistant.assist(text_query=text)
     say(response_text)
 
 def main():
