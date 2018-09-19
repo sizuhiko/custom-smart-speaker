@@ -111,7 +111,10 @@ def say(text):
 
   # Perform the text-to-speech request on the text input with the selected
   # voice parameters and audio file type
-  response = client.synthesize_speech(synthesis_input, voice, audio_config)
+  try:
+    response = client.synthesize_speech(synthesis_input, voice, audio_config)
+  except:
+    pass
 
   # The response's audio_content is binary.
   filename = 'output.mp3'
