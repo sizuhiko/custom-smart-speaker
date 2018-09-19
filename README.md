@@ -42,6 +42,27 @@ $ npm ci
 $ pip install -r requirements.txt
 ```
 
+### Update Google Assistant Library
+
+[send_text_query() is missing from assistant library #252](https://github.com/googlesamples/assistant-sdk-python/issues/252)
+
+```
+$ sudo pip3 install --upgrade google.assistant-library
+```
+
+Change `query` for `/usr/local/lib/python3.5/dist-packages/google/assistant/library/assistant.py` if you want `ja-JP` language.
+Because `encode('ASCII')` only supports single byte languages.
+
+before:
+```python
+self._lib.assistant_send_text_query(self._inst, query.encode('ASCII'))
+```
+
+after:
+```python
+self._lib.assistant_send_text_query(self._inst, query)
+```
+
 ### Compile Snowboy Python3 Wrapper
 
 ```
