@@ -86,7 +86,7 @@ def call_assistant(text):
   grpc_channel = google.auth.transport.grpc.secure_authorized_channel(
     credentials, http_request, 'embeddedassistant.googleapis.com')
   model_id, device_id = aiy.assistant.device_helpers.get_ids_for_service(credentials)
-  with SampleTextAssistant('ja-JP', model_id, device_id, False,
+  with SampleTextAssistant('ja-JP', model_id, device_id,
                            grpc_channel, 60 * 3 + 5) as assistant:
     response_text, response_html = assistant.assist(text_query=text)
     say(response_text)
