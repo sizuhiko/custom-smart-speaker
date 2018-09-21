@@ -19,12 +19,9 @@ import pygame
 import time
 
 import os
-import sys
-import uuid
 import smbus
 
 aiy.i18n.set_language_code('ja-JP')
-myuuid = str(uuid.uuid4())
 model = os.path.join(os.path.dirname(__file__), 'hotword.pmdl')
 
 # for RPI version 1, use "bus = smbus.SMBus(0)"
